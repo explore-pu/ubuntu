@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'yaml'
+
+confDir = File.expand_path(File.dirname(__FILE__))
+
+yamlFile = File.expand_path(File.dirname(__FILE__) + "/focal.yaml")
+
+require File.expand_path(File.dirname(__FILE__) + '/scripts/focal.rb')
+
+Vagrant.configure("2") do |config|
+  if File.exist? yamlFile then
+    settings = YAML::load(File.read(yamlFile))
+  else
+    abort ".yaml file not found in #{confDir}"
+  end
+
+  Focal.configure(config, settings)
+end

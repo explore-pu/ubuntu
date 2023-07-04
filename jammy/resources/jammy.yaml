@@ -1,0 +1,62 @@
+---
+#sources: "http://cn.archive.ubuntu.com"
+ip: "192.168.56.10"
+memory: 2048
+cpus: 2
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+  - ~/.ssh/id_rsa
+
+folders:
+  - map: D:/code
+    to: /home/vagrant/code
+
+sites:
+  - map: laravel.box
+    to: /home/vagrant/code/laravel/public
+  - map: lumen.box
+    to: /home/vagrant/code/lumen/public
+  - map: test.box
+    to: /home/vagrant/code/test/html
+    port: '81'
+    default: true
+
+databases:
+  - laravel
+  - lumen
+  - test
+
+features:
+  - nginx: true
+  - php: true
+  - mysql: true
+  - redis: true
+  - composer: true
+#    - swoole: true
+#    - nodejs: true
+
+#services:
+#    - enabled:
+#          - "mysql"
+#    - disabled:
+#        - "postgresql@11-main"
+
+ports:
+  - send: 80
+    to: 80
+  - send: 81
+    to: 81
+  - send: 443
+    to: 443
+  - send: 3306
+    to: 3306
+  - send: 6379
+    to: 6379
+#    - send: 8025 # Mailhog
+#      to: 8025
+#    - send: 9600
+#      to: 9600
+#    - send: 27017
+#      to: 27017
