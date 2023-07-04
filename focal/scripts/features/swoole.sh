@@ -20,7 +20,6 @@ sudo pecl install swoole-4.8.13
 # 修改swoole配置
 sudo su
 echo "extension = swoole.so" > /etc/php/7.4/mods-available/swoole.ini
-echo "extension=swoole.so" >> /etc/php/7.4/cli/php.ini
 echo "swoole.use_shortname='Off'" >> /etc/php/7.4/cli/php.ini
 # 启动swoole扩展
 phpenmod swoole
