@@ -75,4 +75,4 @@ else
   ln -fs "/etc/apache2/sites-available/000-default-ssl.conf" "/etc/apache2/sites-enabled/default-ssl.conf"
 fi
 
-service apache2 reload
+systemctl restart apache2

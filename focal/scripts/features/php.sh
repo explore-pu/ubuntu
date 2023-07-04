@@ -10,6 +10,7 @@ touch /home/vagrant/.features/php74
 chown -Rf vagrant:vagrant /home/vagrant/.features
 
 apt-get -y install \
+libapache2-mod-php7.4 \
 php7.4 \
 php7.4-bcmath \
 php7.4-bz2 \

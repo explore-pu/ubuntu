@@ -152,7 +152,7 @@ class Focal
       s.path = script_dir + '/hosts-reset.sh'
     end
 
-    # Install All The Configured Nginx Sites
+    # Install All The Configured Sites
     if settings.include? 'sites'
 
       settings['sites'].each do |site|
@@ -189,8 +189,6 @@ class Focal
           s.args = ['127.0.0.1',site['map']]
         end
       end
-
-      config.vm.provision "shell", inline: "sudo systemctl restart nginx"
     end
 
     # Configure All Of The Configured Databases
