@@ -74,5 +74,3 @@ else
   echo "$blockssl" >"/etc/apache2/sites-available/default-ssl.conf"
   ln -fs "/etc/apache2/sites-available/000-default-ssl.conf" "/etc/apache2/sites-enabled/default-ssl.conf"
 fi
-
-systemctl restart apache2

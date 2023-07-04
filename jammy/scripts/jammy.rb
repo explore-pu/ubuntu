@@ -90,9 +90,10 @@ class Jammy
       end
     end
 
+    config.vm.provision "apt_update", type: "shell", inline: "apt-get update && apt-get -y upgrade"
+
     # Install features
     if settings.has_key?('features')
-      config.vm.provision "apt_update", type: "shell", inline: "apt-get update"
 
       settings['features'].each do |feature|
         feature_name = feature.keys[0]
@@ -138,9 +139,11 @@ class Jammy
       end
     end
 
+    web = settings['web'] ||= 'apache2'
+
     # Clear any existing nginx sites
     config.vm.provision 'shell' do |s|
-      s.path = script_dir + '/clear-nginx.sh'
+      s.path = script_dir + "/clear-#{web}.sh"
     end
 
     # Clear any sites and insert markers in /etc/hosts
@@ -159,8 +162,6 @@ class Jammy
           s.args = [site['map']]
         end
 
-        type = site['type'] ||= 'nginx'
-
         default = 'false'
         if site['default'] == true
           default = 'true'
@@ -170,8 +171,8 @@ class Jammy
           s.name = 'Creating Site: ' + site['map']
 
           # Convert the site & any options to an array of arguments passed to the
-          # specific site type script (defaults to laravel)
-          s.path = script_dir + "/sites/#{type}.sh"
+          # specific site script (defaults to laravel)
+          s.path = script_dir + "/sites/#{web}.sh"
           s.args = [
             site['map'],                       # $1
             site['to'],                        # $2
@@ -188,7 +189,7 @@ class Jammy
         end
       end
 
-      config.vm.provision "shell", inline: "sudo systemctl restart nginx"
+      config.vm.provision "shell", inline: "sudo systemctl restart #{web}"
     end
 
     # Configure All Of The Configured Databases

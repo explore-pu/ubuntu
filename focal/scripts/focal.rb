@@ -140,7 +140,7 @@ class Focal
       end
     end
 
-    web = settings['web'] ||= 'apache'
+    web = settings['web'] ||= 'apache2'
 
     # Clear any existing nginx sites
     config.vm.provision 'shell' do |s|
@@ -189,6 +189,8 @@ class Focal
           s.args = ['127.0.0.1',site['map']]
         end
       end
+
+      config.vm.provision "shell", inline: "sudo systemctl restart #{web}"
     end
 
     # Configure All Of The Configured Databases

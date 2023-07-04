@@ -13,6 +13,8 @@ folders:
   - map: D:/code
     to: /home/vagrant/code
 
+web: apache2
+
 sites:
   - map: laravel.box
     to: /home/vagrant/code/laravel/public
@@ -29,13 +31,14 @@ databases:
   - test
 
 features:
-  - nginx: true
+  - apache2: true
+#  - nginx: true
   - php: true
   - mysql: true
   - redis: true
   - composer: true
-#    - swoole: true
-#    - nodejs: true
+#  - swoole: true
+#  - nodejs: true
 
 #services:
 #    - enabled:
@@ -54,9 +57,3 @@ ports:
     to: 3306
   - send: 6379
     to: 6379
-#    - send: 8025 # Mailhog
-#      to: 8025
-#    - send: 9600
-#      to: 9600
-#    - send: 27017
-#      to: 27017

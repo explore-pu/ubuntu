@@ -13,7 +13,7 @@ folders:
   - map: D:/code
     to: /home/vagrant/code
 
-web: apache
+web: apache2
 
 sites:
   - map: laravel.box
@@ -30,7 +30,7 @@ databases:
   - lumen
 
 features:
-  - apache: true
+  - apache2: true
 #  - nginx: true
   - php: true
   - mysql: true

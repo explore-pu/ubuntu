@@ -13,6 +13,4 @@ if [[ "$old_sources" != "$new_sources" ]]; then
     chown -Rf vagrant:vagrant /home/vagrant/.features
 
     sudo find /etc/apt -name 'sources.list' | xargs perl -pi -e "s|$old_sources|$new_sources|g"
-
-    sudo apt-get update
 fi

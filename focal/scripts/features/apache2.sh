@@ -14,4 +14,6 @@ apt-get -y install apache2
 sed -i "s/APACHE_RUN_USER=www-data/APACHE_RUN_USER=vagrant/" /etc/apache2/envvars
 sed -i "s/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=vagrant/" /etc/apache2/envvars
 
+a2enmod rewrite
+
 systemctl enable apache2

@@ -10,6 +10,7 @@ touch /home/vagrant/.features/php81
 chown -Rf vagrant:vagrant /home/vagrant/.features
 
 apt-get -y install \
+libapache2-mod-php8.1 \
 php8.1 \
 php8.1-bcmath \
 php8.1-bz2 \
@@ -49,7 +50,7 @@ php8.1-xmlrpc \
 php8.1-xsl \
 php8.1-zip
 
-systemctl enable php8.1-fpm
+#systemctl enable php8.1-fpm
 
 # 修改php配置
 sed -i "s/;date.timezone.*/date.timezone = PRC/" /etc/php/8.1/cli/php.ini
@@ -60,4 +61,4 @@ sed -i "s/listen\.owner.*/listen.owner = vagrant/" /etc/php/8.1/fpm/pool.d/www.c
 sed -i "s/listen\.group.*/listen.group = vagrant/" /etc/php/8.1/fpm/pool.d/www.conf
 sed -i "s/;listen\.mode.*/listen.mode = 0666/" /etc/php/8.1/fpm/pool.d/www.conf
 
-systemctl restart php8.1-fpm
+#systemctl restart php8.1-fpm
