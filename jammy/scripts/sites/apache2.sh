@@ -10,6 +10,7 @@ block="<VirtualHost *:$3>
     ServerName $ServerName
     ServerAlias www.$1
     DocumentRoot "$2"
+    DirectoryIndex index.html index.php
 
     <Directory "$2">
         AllowOverride All
@@ -39,6 +40,7 @@ blockssl="<IfModule mod_ssl.c>
         ServerName $ServerName
         ServerAlias www.$1
         DocumentRoot "$2"
+        DirectoryIndex index.html index.php
 
         <Directory "$2">
             AllowOverride All
