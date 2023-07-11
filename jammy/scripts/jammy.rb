@@ -167,12 +167,14 @@ class Jammy
           default = 'true'
         end
 
+        type = site['type'] ||= web
+
         config.vm.provision 'shell' do |s|
           s.name = 'Creating Site: ' + site['map']
 
           # Convert the site & any options to an array of arguments passed to the
           # specific site script (defaults to laravel)
-          s.path = script_dir + "/sites/#{web}.sh"
+          s.path = script_dir + "/sites/#{type}.sh"
           s.args = [
             site['map'],                       # $1
             site['to'],                        # $2
