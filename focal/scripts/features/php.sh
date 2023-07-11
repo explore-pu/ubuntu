@@ -49,7 +49,7 @@ php7.4-xmlrpc \
 php7.4-xsl \
 php7.4-zip
 
-#systemctl enable php7.4-fpm
+systemctl enable php7.4-fpm
 
 # 修改php配置
 sed -i "s/;date.timezone.*/date.timezone = PRC/" /etc/php/7.4/cli/php.ini
@@ -60,4 +60,4 @@ sed -i "s/listen\.owner.*/listen.owner = vagrant/" /etc/php/7.4/fpm/pool.d/www.c
 sed -i "s/listen\.group.*/listen.group = vagrant/" /etc/php/7.4/fpm/pool.d/www.conf
 sed -i "s/;listen\.mode.*/listen.mode = 0666/" /etc/php/7.4/fpm/pool.d/www.conf
 
-#systemctl restart php7.4-fpm
+systemctl restart php7.4-fpm
