@@ -11,6 +11,8 @@ chown -Rf vagrant:vagrant /home/vagrant/.features
 
 apt-get -y install nginx
 
-sed -i "s/user www-data;/user vagrant;" /etc/nginx/nginx.conf
-
 systemctl enable nginx
+
+sed -i "s/user www-data;/user vagrant;/" /etc/nginx/nginx.conf
+
+systemctl restart nginx
