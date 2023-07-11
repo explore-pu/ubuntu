@@ -10,7 +10,6 @@ touch /home/vagrant/.features/php81
 chown -Rf vagrant:vagrant /home/vagrant/.features
 
 apt-get -y install \
-libapache2-mod-php8.1 \
 php8.1 \
 php8.1-bcmath \
 php8.1-bz2 \

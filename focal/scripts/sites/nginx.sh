@@ -14,7 +14,7 @@ block="server {
     server_name $server_name;
     root \"$2\";
 
-    index index.html index.htm index.php;
+    index index.html index.php;
 
     charset utf-8;
     client_max_body_size 100m;
