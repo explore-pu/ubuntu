@@ -191,7 +191,7 @@ class Jammy
         end
       end
 
-      config.vm.provision "shell", inline: "sudo systemctl restart #{web}"
+      config.vm.provision "restart #{web}", type: "shell", inline: "sudo systemctl restart #{web}"
     end
 
     # Configure All Of The Configured Databases

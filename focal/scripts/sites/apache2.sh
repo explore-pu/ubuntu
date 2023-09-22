@@ -5,7 +5,15 @@ if [[ "${5}" != "false" ]]; then
     ServerName="$6"
 fi
 
-block="<VirtualHost *:$3>
+VirtualHost="*:$3"
+VirtualHostSSL="*:$4"
+
+if [[ "${5}" != "false" ]]; then
+    VirtualHost="_default_:$3"
+    VirtualHostSSL="_default_:$4"
+fi
+
+block="<VirtualHost $VirtualHost>
     ServerAdmin webmaster@localhost
     ServerName $ServerName
     ServerAlias www.$1
@@ -35,7 +43,7 @@ else
 fi
 
 blockssl="<IfModule mod_ssl.c>
-    <VirtualHost *:$4>
+    <VirtualHost $VirtualHostSSL>
         ServerAdmin webmaster@localhost
         ServerName $ServerName
         ServerAlias www.$1
@@ -74,5 +82,5 @@ if [[ "${5}" == "false" ]]; then
   ln -fs "/etc/apache2/sites-available/$1-ssl.conf" "/etc/apache2/sites-enabled/$1-ssl.conf"
 else
   echo "$blockssl" >"/etc/apache2/sites-available/default-ssl.conf"
-  ln -fs "/etc/apache2/sites-available/000-default-ssl.conf" "/etc/apache2/sites-enabled/default-ssl.conf"
+  ln -fs "/etc/apache2/sites-available/default-ssl.conf" "/etc/apache2/sites-enabled/default-ssl.conf"
 fi
