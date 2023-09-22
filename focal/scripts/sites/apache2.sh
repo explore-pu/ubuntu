@@ -69,7 +69,7 @@ blockssl="<IfModule mod_ssl.c>
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 "
 
-if [[ "${11}" == "false" ]]; then
+if [[ "${5}" == "false" ]]; then
   echo "$blockssl" > "/etc/apache2/sites-available/$1-ssl.conf"
   ln -fs "/etc/apache2/sites-available/$1-ssl.conf" "/etc/apache2/sites-enabled/$1-ssl.conf"
 else

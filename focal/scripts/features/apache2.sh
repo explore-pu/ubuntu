@@ -16,4 +16,6 @@ sed -i "s/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=vagrant/" /etc/apache2/envv
 
 a2enmod rewrite
 
+a2enmod ssl
+
 systemctl enable apache2
